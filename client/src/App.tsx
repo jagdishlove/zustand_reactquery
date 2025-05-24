@@ -6,26 +6,42 @@ import { usePostStore } from "./store/usePostStore";
 
 function App() {
   const { selectedPostId, setSelectedPostId } = usePostStore();
-  const { data = [] } = useQuery<User[]>({
+  const { data = [], isLoading } = useQuery<User[]>({
     queryKey: ["users"],
     queryFn: () => getUsers(),
   });
+
   return (
-    <div className="container">
-      {data.map((user) => {
-        const colorFLag = selectedPostId === user.id ? { color: "red" } : null;
-        return (
-          <div
-            style={{ cursor: "pointer", ...colorFLag }}
-            onClick={() => setSelectedPostId(user.id)}
-            key={user.id}
-          >
-            {user.name}
+    <div className="app-layout">
+      <nav className="navbar">
+        <h2>Zustand + React Query</h2>
+      </nav>
+
+      <main className="main-content">
+        <h1>Users List</h1>
+        {isLoading ? (
+          <p className="loading">Loading...</p>
+        ) : (
+          <div className="user-list">
+            {data.map((user) => (
+              <div
+                className={`user-item ${
+                  selectedPostId === user.id ? "selected" : ""
+                }`}
+                onClick={() => setSelectedPostId(user.id)}
+                key={user.id}
+              >
+                {user.name}
+              </div>
+            ))}
           </div>
-        );
-      })}
-      selected Id : {selectedPostId}
+        )}
+        <div className="selected-id">
+          <strong>Selected ID:</strong> {selectedPostId}
+        </div>
+      </main>
     </div>
   );
 }
+
 export default App;

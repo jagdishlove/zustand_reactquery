@@ -1,15 +1,57 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.app-layout {
+  display: flex;
+  height: 100vh;
+  font-family: system-ui, sans-serif;
+  color: #fff;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #111;
+  position: fixed;
   text-align: center;
 }
 
-.container {
+.main-content {
+  margin-top: 1.5rem;
+  padding: 2rem;
+  width: 100%;
+  background-color: #1e1e2f;
+}
+
+h1 {
+  margin-bottom: 1rem;
+}
+
+.loading {
+  font-style: italic;
+  color: #bbb;
+}
+
+.user-list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  text-align: left;
-  font-size: 1rem;
-  font-weight: bold;
+  gap: 0.75rem;
+}
+
+.user-item {
+  padding: 0.5rem 1rem;
+  background-color: #2c2c3e;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.user-item:hover {
+  background-color: #3f3f5a;
+}
+
+.user-item.selected {
+  background-color: #ff3c3c;
+  color: white;
+}
+
+.selected-id {
+  margin-top: 2rem;
+  font-size: 1.1rem;
 }
