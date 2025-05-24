@@ -52,5 +52,4 @@ Use **Zustand + React Query** if:
 
 ---
 
-## 📁 Folder Structure
 
